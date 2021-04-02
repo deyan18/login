@@ -4,16 +4,64 @@
 xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Sign Up - CodeJava</title>
+	<title>Perfil</title>
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<p>
-				Nombre: <b>[[${#request.userPrincipal.principal.fullName}]]</b>
-			</p>
-		
+	<h1> Perfil </h1>
 	
+	<div class="container text-center">
+	
+		<form>
+		  <label>Nombre: <b>[[${#request.userPrincipal.principal.Nombre}]]</b></label><br>
+		  <label>Apellidos: <b>[[${#request.userPrincipal.principal.Apellidos}]]</b></label><br>
+		  <label>Correo: <b>[[${#request.userPrincipal.principal.Username}]]</b></label><br>
+		  <label for="contrasena">Contrasena:</label><br>
+		  <input type="text" id="contrasena" name="contr" minlength="6"><br><br>		  
+		</form>
+		
+		<!-- <form th:action="@{/process_perfil}" th:object="${user}" 
+			method="post" style="max-width: 600px; margin: 0 auto;">
+				<div class="m-3">
+					<div class="form-group row">
+						<label class="col-4 col-form-label">Correo: </label>
+						<div class="col-8">
+							<input type="email" th:field="*{email}" class="form-control" required />
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-4 col-form-label">Contrasena: </label>
+						<div class="col-8">
+							<input type="password" th:field="*{password}" class="form-control" 
+									required minlength="6" maxlength="10"/>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-4 col-form-label">Nombre: </label>
+						<div class="col-8">
+							<input type="text" th:field="*{firstName}" class="form-control" 
+									required minlength="2" maxlength="20"/>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-4 col-form-label">Apellidos: </label>
+						<div class="col-8">
+							<input type="text" th:field="*{lastName}" class="form-control" 
+									required minlength="2" maxlength="20" />
+						</div>
+					</div>
+					
+					<div>
+						<button type="submit" class="btn btn-primary">Guardar</button> 
+					</div>
+			</div> -->
+		</form>
+		
+	</div>
 </body>
 </html>

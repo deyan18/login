@@ -51,5 +51,13 @@ public class CustomUserDetails implements UserDetails {
 	public String getFullName() {
 		return user.getFirstName() + " " + user.getLastName();
 	}
+	
+	public String getNombre() {
+		return user.getFirstName();
+	}
+	
+	public String getApellidos() {
+		return user.getLastName();
+	}
 
 }

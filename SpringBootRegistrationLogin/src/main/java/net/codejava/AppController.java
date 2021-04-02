@@ -1,6 +1,7 @@
 package net.codejava;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -56,13 +57,15 @@ public class AppController {
 	
 	@PostMapping("/process_perfil")
 	public String processPerfil(User user) {
+		User aux = userRepo.findByEmail(user.getEmail());
+		
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encodedPassword = passwordEncoder.encode(user.getPassword());
-		user.setPassword(encodedPassword);
+		aux.setPassword(encodedPassword);		
 		
-		userRepo.save(user);
+		userRepo.save(aux);
 
 		
-		return "perfil";
+		return "users";
 	}
 }

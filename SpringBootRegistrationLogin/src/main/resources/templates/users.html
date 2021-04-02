@@ -11,33 +11,33 @@
 <div class="container text-center">
 	<div>
 		<form th:action="@{/logout}" method="post">
-			<p>
-				Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
-			</p>
+			<h1>
+				Bienvenido <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+			</h1>
 			<input type="submit" value="Sign Out" />
 		</form>
-	<button onclick="document.location='perfil'">Perfil</button>
+		<button onclick="document.location='perfil'">Perfil</button>
 	</div>
 	<div>
-		<h1 >List of Users</h1>
+		<h2 >Usuarios</h2>
 	</div>
 	
 	<div>
 		<table class="table table-striped table-bordered">
 			<thead class="thead-dark">
 				<tr>
-					<th>User ID</th>
+					<th>ID</th>
 					<th>E-mail</th>
-					<th>First Name</th>
-					<th>Last Name</th>
+					<th>Nombre</th>
+					<th>Apellidos</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="user: ${listUsers}">
-					<td th:text="${user.id}">User ID</td>
+					<td th:text="${user.id}">ID</td>
 					<td th:text="${user.email}">E-mail</td>
-					<td th:text="${user.firstName}">First Name</td>
-					<td th:text="${user.lastName}">Last Name</td>
+					<td th:text="${user.firstName}">Nombre</td>
+					<td th:text="${user.lastName}">Apellidos</td>
 				</tr>
 			</tbody>
 		</table>
