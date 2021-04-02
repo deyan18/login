@@ -66,6 +66,6 @@ public class AppController {
 		userRepo.save(aux);
 
 		
-		return "users";
+		return "index";
 	}
 }

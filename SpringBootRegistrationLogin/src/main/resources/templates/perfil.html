@@ -14,12 +14,15 @@ xmlns="http://www.w3.org/1999/xhtml">
 	
 	<div class="container text-center">
 	
-		<form>
+		<form th:action="@{/process_perfil}" th:object="${user}">
 		  <label>Nombre: <b>[[${#request.userPrincipal.principal.Nombre}]]</b></label><br>
 		  <label>Apellidos: <b>[[${#request.userPrincipal.principal.Apellidos}]]</b></label><br>
 		  <label>Correo: <b>[[${#request.userPrincipal.principal.Username}]]</b></label><br>
 		  <label for="contrasena">Contrasena:</label><br>
-		  <input type="text" id="contrasena" name="contr" minlength="6"><br><br>		  
+		  <input type="text" id="contrasena" name="contr" minlength="6"><br><br>
+		  <div>
+				<button type="submit" class="btn btn-primary">Guardar</button> 
+			</div>		  
 		</form>
 		
 		<!-- <form th:action="@{/process_perfil}" th:object="${user}" 
