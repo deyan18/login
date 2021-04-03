@@ -2,6 +2,8 @@ package net.codejava;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -24,10 +26,12 @@ public class UserRepositoryTests {
 	@Test
 	public void testCreateUser() {
 		User user = new User();
-		user.setEmail("deyan@gmail.com");
+		int randomint= ThreadLocalRandom.current().nextInt(0, 100000);
+		String useremail = "ual-" + randomint + "@ual.es";
+		user.setEmail(useremail);
 		user.setPassword("deyan1812");
-		user.setFirstName("Deyan");
-		user.setLastName("Stamchev");
+		user.setFirstName("Random");
+		user.setLastName(randomint+"");
 		
 		User savedUser = repo.save(user);
 		

@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="ISO-8859-1">
+	 <meta charset="UTF-8">
 	<title>Perfil</title>
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
@@ -14,12 +14,14 @@ xmlns="http://www.w3.org/1999/xhtml">
 	
 	<div class="container text-center">
 	
-		<form th:action="@{/process_perfil}" th:object="${user}">
+		<form th:action="@{/process_perfil}" th:object="${user}"
+      method="post" style="max-width: 600px; margin: 0 auto;">
 		  <label>Nombre: <b>[[${#request.userPrincipal.principal.Nombre}]]</b></label><br>
 		  <label>Apellidos: <b>[[${#request.userPrincipal.principal.Apellidos}]]</b></label><br>
 		  <label>Correo: <b>[[${#request.userPrincipal.principal.Username}]]</b></label><br>
-		  <label for="contrasena">Contrasena:</label><br>
-		  <input type="text" id="contrasena" name="contr" minlength="6"><br><br>
+		  <label for="contrasena">Nueva Contraseña:</label><br>
+		  <input type="password" th:field="*{password}" class="form-control" 
+              required minlength="6" maxlength="10"/><br><br>
 		  <div>
 				<button type="submit" class="btn btn-primary">Guardar</button> 
 			</div>		  
@@ -62,9 +64,9 @@ xmlns="http://www.w3.org/1999/xhtml">
 					<div>
 						<button type="submit" class="btn btn-primary">Guardar</button> 
 					</div>
-			</div> -->
+			</div> 
 		</form>
-		
+		-->
 	</div>
 </body>
 </html>

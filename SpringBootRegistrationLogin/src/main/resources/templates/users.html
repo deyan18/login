@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="ISO-8859-1">
+	 <meta charset="UTF-8">
 	<title>List Users</title>
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
@@ -30,6 +30,7 @@
 					<th>E-mail</th>
 					<th>Nombre</th>
 					<th>Apellidos</th>
+					<th>Pass</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,6 +39,7 @@
 					<td th:text="${user.email}">E-mail</td>
 					<td th:text="${user.firstName}">Nombre</td>
 					<td th:text="${user.lastName}">Apellidos</td>
+					<td th:text="${user.password}">Pas</td>
 				</tr>
 			</tbody>
 		</table>
