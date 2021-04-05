@@ -28,20 +28,37 @@ public class AppController {
 	
 	@GetMapping("/register")
 	public String showRegistrationForm(Model model) {
-		model.addAttribute("user", new User());
+			
+			//User user = (User) model.getAttribute("user");
+			
+			//if(model.getAttribute("user") != null) {
+				model.addAttribute("user", new User());
+				return "signup_form";
+			//}
+			
+			//return "register";
 		
-		return "signup_form";
+		
 	}
 	
 	@PostMapping("/process_register")
 	public String processRegister(User user) {
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String encodedPassword = passwordEncoder.encode(user.getPassword());
-		user.setPassword(encodedPassword);
+		while(true) {
+			try {
+				BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+				String encodedPassword = passwordEncoder.encode(user.getPassword());
+				user.setPassword(encodedPassword);
+				
+				userRepo.save(user);
+				
+				return "register_success";
+			}catch(Exception e){
+				return "register_fail";
+			}
+		}
 		
-		userRepo.save(user);
 		
-		return "register_success";
+		
 	}
 	
 	@GetMapping("/users")
