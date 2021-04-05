@@ -42,7 +42,7 @@
 				<div class="form-group row">
 					<label class="col-4 col-form-label">Correo: </label>
 					<div class="col-8">
-						<input type="email" th:value ="${user.email}" class="form-control"
+						<input type="email" th:value ="${user.email}" class="form-control" id = "mail"
 							required/>
 					</div>
 				</div>
@@ -50,7 +50,7 @@
 				<div class="form-group row">
 					<label class="col-4 col-form-label">Contrasena: </label>
 					<div class="col-8">
-						<input type="password" th:field="*{password}" class="form-control"
+						<input type="password" th:field="*{password}" class="form-control" id = "contr"
 							required minlength="6" maxlength="10" />
 					</div>
 				</div>
