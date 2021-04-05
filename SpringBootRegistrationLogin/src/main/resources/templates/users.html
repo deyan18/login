@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="ISO-8859-1">
+	 <meta charset="UTF-8">
 	<title>List Users</title>
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
@@ -11,12 +11,14 @@
 <div class="container text-center">
 	<div>
 		<form th:action="@{/logout}" method="post">
-			<h1>
+			<h3>
 				Bienvenido <b>[[${#request.userPrincipal.principal.fullName}]]</b>
-			</h1>
+			</h3>
 			<input type="submit" value="Sign Out" />
 		</form>
-		<button onclick="document.location='perfil'">Perfil</button>
+    <div>
+     <a th:href="@{'/showPerfil/' + ${#request.userPrincipal.principal.username}}"> Edit</a>
+ 	  </div>
 	</div>
 	<div>
 		<h2 >Usuarios</h2>
@@ -30,6 +32,8 @@
 					<th>E-mail</th>
 					<th>Nombre</th>
 					<th>Apellidos</th>
+					<th>Pass</th>
+					<th> edit </th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,6 +42,8 @@
 					<td th:text="${user.email}">E-mail</td>
 					<td th:text="${user.firstName}">Nombre</td>
 					<td th:text="${user.lastName}">Apellidos</td>
+					<td th:text="${user.password}">Pas</td>
+					<td> <a th:href="@{'/showPerfil/' + ${user.email}}"> Edit</a> </td>
 				</tr>
 			</tbody>
 		</table>

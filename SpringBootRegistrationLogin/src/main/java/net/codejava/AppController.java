@@ -8,7 +8,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.sun.security.auth.UserPrincipal;
 
 @Controller
 public class AppController {
@@ -46,26 +51,36 @@ public class AppController {
 		
 		return "users";
 	}
-	
-	@GetMapping("/perfil")
-	public String perfil(Model model) {
-		
-		
-		return "perfil";
+
+
+	@RequestMapping("/showPerfil/{email}")
+	public ModelAndView showPerfil(@PathVariable(name = "email") String email) {
+		User user  = userRepo.findByEmail(email);
+		ModelAndView mav = new ModelAndView("perfil");
+		mav.addObject("user", user);
+		return mav;
 
 	}
-	
-	@PostMapping("/process_perfil")
-	public String processPerfil(User user) {
-		User aux = userRepo.findByEmail(user.getEmail());
+
+
+	@PostMapping("/processPerfil")
+	public String procesarPerfil(User user) {
 		
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encodedPassword = passwordEncoder.encode(user.getPassword());
-		aux.setPassword(encodedPassword);		
+		user.setPassword(encodedPassword);		
 		
-		userRepo.save(aux);
-
+// 		userRepo.save(user);
 		
-		return "index";
+		return "user_updated_success";
+	}
+	
+	@RequestMapping("/edit/{email}")
+	public ModelAndView showEditUserPage(@PathVariable(name = "email") String email) {
+	    ModelAndView mav = new ModelAndView("edit_product");
+	    User user  = userRepo.findByEmail(email);
+	    userRepo.save(user);
+	     
+	    return mav;
 	}
 }
