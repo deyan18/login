@@ -36,7 +36,7 @@
 </div>
 
 	<div class="container text-center">
-		<form th:action="@{/processPerfil}" th:object="${user}"
+		<form th:action="@{/processPerfil}" th:object="${user}" onsubmit="return comprobar(this);"
 			method="post" style="max-width: 600px; margin: 0 auto;">
 			<div class="m-3">
 				<div class="form-group row">
@@ -46,14 +46,22 @@
 							required/>
 					</div>
 				</div>
-
+				
 				<div class="form-group row">
-					<label class="col-4 col-form-label">Contrasena: </label>
-					<div class="col-8">
-						<input type="password" th:field="*{password}" class="form-control" id = "contr"
-							required minlength="6" maxlength="10" />
-					</div>
+				<label class="col-4 col-form-label">Contrasena: </label>
+				<div class="col-8">
+					<input type="password" th:field="*{password}" class="form-control" id = "contr"
+							 pattern=".{6,10}" title="Entre 6 y 10 caracteres"/>
 				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Confirmar contrasena: </label>
+				<div class="col-8">
+					<input type="password" th:field="*{password}" class="form-control" id = "confirmar"
+							 pattern=".{6,10}" title="Entre 6 y 10 caracteres"/>
+				</div>
+			</div>
 
 				<div class="form-group row">
 					<label class="col-4 col-form-label">Nombre: </label>
@@ -77,5 +85,19 @@
 				</div>
 		</form>
 	</div>
+	
+	<script type="text/javascript">
+	function comprobar(form){
+		if(!(form.contr.value == form.confirmar.value)){
+			alert("La contraseña no es igual a su confirmacion");
+			form.contr.focus();
+			form.confirmar.focus();
+			return false;
+		} else{
+			return true;
+		}
+	}
+	</script>
+	
 </body>
 </html>

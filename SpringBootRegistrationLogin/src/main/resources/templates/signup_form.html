@@ -12,7 +12,7 @@
 		<div>
 			<h1>Registro</h1>
 		</div>
-		<form th:action="@{/process_register}" th:object="${user}" 
+		<form th:action="@{/process_register}" th:object="${user}" onsubmit="return comprobar(this);"
 			method="post" style="max-width: 600px; margin: 0 auto;">
 		<div class="m-3">
 			<div class="form-group row">
@@ -25,8 +25,16 @@
 			<div class="form-group row">
 				<label class="col-4 col-form-label">Contrasena: </label>
 				<div class="col-8">
-					<input type="password" th:field="*{password}" class="form-control" 
-							 minlength="6" maxlength="10" required/>
+					<input type="password" th:field="*{password}" class="form-control" id = "password"
+							 pattern=".{6,10}" title="Entre 6 y 10 caracteres"/>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Confirmar contrasena: </label>
+				<div class="col-8">
+					<input type="password" th:field="*{password}" class="form-control" id = "confirmar"
+							 pattern=".{6,10}" title="Entre 6 y 10 caracteres"/>
 				</div>
 			</div>
 			
@@ -52,5 +60,19 @@
 		</div>
 		</form>
 	</div>
+	
+	<script type="text/javascript">
+	function comprobar(form){
+		if(!(form.password.value == form.confirmar.value)){
+			alert("La contraseña no es igual a su confirmacion");
+			form.password.focus();
+			form.confirmar.focus();
+			return false;
+		} else{
+			return true;
+		}
+	}
+	</script>
+	
 </body>
 </html>
