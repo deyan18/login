@@ -14,11 +14,8 @@
 			<h3>
 				Bienvenido <b>[[${#request.userPrincipal.principal.fullName}]]</b>
 			</h3>
-			<input type="submit" value="Sign Out" />
+			<input type="submit" value="Cerrar Sesion" />
 		</form>
-    <div>
-     <a th:href="@{'/showPerfil/' + ${#request.userPrincipal.principal.username}}"> Edit</a>
- 	  </div>
 	</div>
 	<div>
 		<h2 >Usuarios</h2>
@@ -32,8 +29,8 @@
 					<th>E-mail</th>
 					<th>Nombre</th>
 					<th>Apellidos</th>
-					<th>Pass</th>
-					<th> edit </th>
+					<th>Contraseña</th>
+					<th>Editar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -42,8 +39,8 @@
 					<td th:text="${user.email}">E-mail</td>
 					<td th:text="${user.firstName}">Nombre</td>
 					<td th:text="${user.lastName}">Apellidos</td>
-					<td th:text="${user.password}">Pas</td>
-					<td> <a th:href="@{'/showPerfil/' + ${user.email}}"> Edit</a> </td>
+					<td th:text="${user.password}">Contraseña</td>
+					<td> <a th:href="@{'/showPerfil/' + ${user.email}}"> Editar</a> </td>
 				</tr>
 			</tbody>
 		</table>

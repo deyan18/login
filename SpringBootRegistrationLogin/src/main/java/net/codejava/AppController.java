@@ -80,7 +80,7 @@ public class AppController {
 	    ModelAndView mav = new ModelAndView("edit_product");
 	    User user  = userRepo.findByEmail(email);
 	    userRepo.save(user);
-	     
+	    
 	    return mav;
 	}
 }
