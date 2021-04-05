@@ -36,7 +36,7 @@
 </div>
 
 	<div class="container text-center">
-		<form th:action="@{/processPerfil}" th:object="${user}" onsubmit="return comprobar(this);"
+		<form th:action="@{/processPerfil}" th:object="${user}" onsubmit="event.preventDefault(); comprobar(this);"
 			method="post" style="max-width: 600px; margin: 0 auto;">
 			<div class="m-3">
 				<div class="form-group row">
@@ -58,7 +58,7 @@
 			<div class="form-group row">
 				<label class="col-4 col-form-label">Confirmar contrasena: </label>
 				<div class="col-8">
-					<input type="password" th:field="*{password}" class="form-control" id = "confirmar"
+					<input type="password" class="form-control" id = "confirmar"
 							 pattern=".{6,10}" title="Entre 6 y 10 caracteres"/>
 				</div>
 			</div>
@@ -94,6 +94,7 @@
 			form.confirmar.focus();
 			return false;
 		} else{
+			form.submit();
 			return true;
 		}
 	}
