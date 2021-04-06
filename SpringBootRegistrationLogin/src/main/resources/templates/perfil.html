@@ -67,7 +67,7 @@
 					<label class="col-4 col-form-label">Nombre: </label>
 					<div class="col-8">
 						<input type="text" th:value="${user.firstName}" class="form-control" id = "nombre"
-							required pattern=".{2,20}" />
+							required pattern=".{2,20}" title="Entre 2 y 20 caracteres"/>
 					</div>
 				</div>
 
@@ -75,7 +75,7 @@
 					<label class="col-4 col-form-label">Apellidos: </label>
 					<div class="col-8">
 						<input type="text" th:value="${user.lastName}" class="form-control" id = "apellidos"
-							required pattern=".{2,20}" />
+							required pattern=".{2,20}" title="Entre 2 y 20 caracteres"/>
 					</div>
 				</div>
 
