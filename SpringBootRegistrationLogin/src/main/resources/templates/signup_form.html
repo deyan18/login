@@ -26,7 +26,7 @@
 				<label class="col-4 col-form-label">Contrasena: </label>
 				<div class="col-8">
 					<input type="password" th:field="*{password}" class="form-control" id = "contrasenia"
-							 pattern=".{6,10}" title="Entre 6 y 10 caracteres"/>
+							 required pattern=".{6,10}" title="Entre 6 y 10 caracteres"/>
 				</div>
 			</div>
 			
@@ -34,7 +34,7 @@
 				<label class="col-4 col-form-label">Confirmar contrasena: </label>
 				<div class="col-8">
 					<input type="password" class="form-control" id = "confirmar"
-							 pattern=".{6,10}" title="Entre 6 y 10 caracteres"/>
+							 required pattern=".{6,10}" title="Entre 6 y 10 caracteres"/>
 				</div>
 			</div>
 			
@@ -42,7 +42,7 @@
 				<label class="col-4 col-form-label">Nombre: </label>
 				<div class="col-8">
 					<input type="text" th:field="*{firstName}" class="form-control" 
-							required minlength="2" maxlength="20"/>
+							required pattern=".{2,20}"/>
 				</div>
 			</div>
 			
@@ -50,7 +50,7 @@
 				<label class="col-4 col-form-label">Apellidos: </label>
 				<div class="col-8">
 					<input type="text" th:field="*{lastName}" class="form-control" 
-							required minlength="2" maxlength="20" />
+							required pattern=".{2,20}" />
 				</div>
 			</div>
 			
@@ -64,9 +64,9 @@
 	<script type="text/javascript">
 	function comprobar(form){
 		if(!(form.contrasenia.value === form.confirmar.value)){
-			alert("La contraseña no es igual a su confirmacion "+form.contrasenia.value+ " vs "+form.confirmar.value);
-			location.reload();
-			form.password.focus();
+			alert("La contraseña no es igual a su confirmacion");
+			//location.reload();
+			form.contrasenia.focus();
 			form.confirmar.focus();
 			return false;
 		} else{
