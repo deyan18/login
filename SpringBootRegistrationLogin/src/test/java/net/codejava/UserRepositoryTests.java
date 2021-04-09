@@ -23,6 +23,7 @@ public class UserRepositoryTests {
 	@Autowired
 	private UserRepository repo;
 	
+	/*
 	@Test
 	public void testCreateUser() {
 		User user = new User();
@@ -39,7 +40,7 @@ public class UserRepositoryTests {
 		
 		assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
 		
-	}
+	}*/
 	/*
 	@Test
 	public void testFindByEmail() {
